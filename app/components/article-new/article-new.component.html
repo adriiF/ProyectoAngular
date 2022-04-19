@@ -1,0 +1,58 @@
+
+<div class="center-crear" >
+
+
+
+<div> <h2 id="titulo">{{ page_title }}</h2>
+</div>
+<div>
+  <form class="full-form" #articleForm="ngForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="nombre">Titulo</label>
+      <input type="text"  name="title" #title="ngModel" [(ngModel)]="article.title" required/>
+
+      <small *ngIf="!title.valid && title.touched">
+        El titulo no es válido
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label for="content">Descripción</label>
+      <textarea  name="content" #content="ngModel" [(ngModel)]="article.content" required></textarea>
+      <small *ngIf="!content.valid && content.touched">
+        El contenido no es válido
+      </small>
+    </div>
+
+    <div class="image-thumb" *ngIf="is_edit">
+      <img
+        src="{{ url + 'get-image/' + article.image }}"
+        width="100px"
+        height="100px"
+        alt="{{ article.title }}"
+        *ngIf="article.image"
+      />
+      <img
+        src="assets/images/default.png"
+        width="100px"
+        height="100px"
+        alt="{{ article.title }}"
+        *ngIf="!article.image"
+      />
+    </div>
+
+    <div class="form-group" class="subir-img">
+      <!--NO funciona libreria npm angualar-file-uploader-->
+      <angular-file-uploader
+        [config]="afuConfig"
+        (ApiResponse)="imageUpload($event)"
+      >
+      </angular-file-uploader>
+    </div>
+
+    <div class="clearfix"></div>
+    <input type="submit" value="Guardar" class="btn btn-success"  [disabled]="articleForm.invalid"/>
+  </form>
+  <div class="clearfix"></div>
+</div>
+</div>

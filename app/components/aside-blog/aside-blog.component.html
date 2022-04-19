@@ -1,0 +1,22 @@
+
+<aside id="lateral" >
+    <h3>BUSCAR</h3>
+    <div id="search">
+        <form #searchForm ="ngForm" (ngSubmit)="goSearch()"> 
+            <input type="text" name="search" [(ngModel)]="searchString" />
+          <!--  <input type="submit" name="submit" value="L" class="icon" />-->
+        </form>
+    </div>
+    <h3>Crear Artículo</h3>
+    <div id="login" class="aside-box" style="height: 100px;">
+      <div style="margin-top: 15px; margin-left: 60px; ">
+        <a [routerLink]="['/blog/crear']" class="btn btn-primary" > Nuevo artículo</a><br/>
+       </div>
+            
+
+     
+       
+    </div>
+    <div class="clearfix"></div>
+   
+</aside>
